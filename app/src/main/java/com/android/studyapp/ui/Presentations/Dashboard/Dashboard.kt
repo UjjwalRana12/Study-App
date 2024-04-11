@@ -19,6 +19,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -72,6 +73,25 @@ fun DashBoard() {
                     subjectList = subjects
                 )
             }
+            item {
+                Button(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 48.dp, vertical = 12.dp)
+                )
+                {
+                    Text(text = "Start Study Session")
+                }
+            }
+
+                TasksList(
+                    sectionTitle = "UPCOMING TASK",
+                    emptyListText = "You don't have any upcoming tasks\n , Click the + sign to Create a List",
+                    tasks = emptyList()
+                )
+
+
         }
 
     }

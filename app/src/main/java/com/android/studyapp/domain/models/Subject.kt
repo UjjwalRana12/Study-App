@@ -9,11 +9,11 @@ data class Subject(
 
 ){
     companion object{
-        private val gradient1 = listOf(Color(0xFFFF4081), Color(0xFFFFEBEE))
-        private val gradient2 = listOf(Color(0xFFFFFF00), Color(0xFFC8E6C9))
-        private val gradient3 = listOf(Color(0xFF18FFFF), Color(0xFFC8E6C9))
-        private val gradient4 = listOf(Color(0xFF69F0AE), Color(0xFFC8E6C9))
-        private val gradient5 = listOf(Color(0xFFFF6E40), Color(0xFFBBDEFB))
+        private val gradient1 = listOf(Color(0xFFFF4081), Color(0xFF494747))
+        private val gradient2 = listOf(Color(0xFFFFFF00), Color(0xFF3F423F))
+        private val gradient3 = listOf(Color(0xFF18FFFF), Color(0xFF4B4E4B))
+        private val gradient4 = listOf(Color(0xFF69F0AE), Color(0xFF3A3D3A))
+        private val gradient5 = listOf(Color(0xFFFF6E40), Color(0xFF454647))
 
 
 
