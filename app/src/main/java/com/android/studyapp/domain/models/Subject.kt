@@ -5,8 +5,8 @@ import androidx.compose.ui.graphics.Color
 data class Subject(
     val name:String,
     val goalHours:Float,
-    val colors:List<Color>
-
+    val colors:List<Color>,
+    val subjectId:Int
 ){
     companion object{
         private val gradient1 = listOf(Color(0xFFFF4081), Color(0xFF494747))

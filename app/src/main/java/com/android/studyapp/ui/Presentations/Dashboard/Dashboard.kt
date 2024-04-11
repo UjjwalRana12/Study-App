@@ -10,9 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -32,25 +30,105 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.android.studyapp.R
 import com.android.studyapp.domain.models.Subject
 import com.android.studyapp.ui.Presentations.Components.CountCard
+import com.android.studyapp.domain.models.Task
 
 @Composable
 fun DashBoard() {
+    val context = LocalContext.current
 
     val subjects = listOf(
-        Subject(name = "English", goalHours = 10f, colors = Subject.subjectCardColors[0]),
-        Subject(name = "Maths", goalHours = 10f, colors = Subject.subjectCardColors[1]),
-        Subject(name = "English", goalHours = 10f, colors = Subject.subjectCardColors[2]),
-        Subject(name = "Science", goalHours = 10f, colors = Subject.subjectCardColors[3]),
-        Subject(name = "Chemistry", goalHours = 10f, colors = Subject.subjectCardColors[4]),
+        Subject(name = "English", goalHours = 10f, colors = Subject.subjectCardColors[0],0),
+        Subject(name = "Maths", goalHours = 10f, colors = Subject.subjectCardColors[1],0),
+        Subject(name = "English", goalHours = 10f, colors = Subject.subjectCardColors[2],0),
+        Subject(name = "Science", goalHours = 10f, colors = Subject.subjectCardColors[3],0),
+        Subject(name = "Chemistry", goalHours = 10f, colors = Subject.subjectCardColors[4],0),
     )
-    Scaffold(topBar = { DashBoardTopAppBar() }
-    ) { paddingValues ->
+
+    val task = listOf(
+        Task(
+            title = "prepapre notes",
+            description = " ",
+            dueDate = 0L,
+            priority = 1,
+            relatedSubject = "",
+            isCompleted = false,
+            taskSubjectId = 0,
+            taskId = 1
+        ),
+
+        Task(
+            title = "prepapre notes",
+            description = " ",
+            dueDate = 0L,
+            priority = 1,
+            relatedSubject = "",
+            isCompleted = false,
+            taskSubjectId = 0,
+            taskId = 1
+        ),
+
+        Task(
+            title = "do notes",
+            description = " ",
+            dueDate = 0L,
+            priority = 1,
+            relatedSubject = "",
+            isCompleted = false,
+            taskSubjectId = 0,
+            taskId = 1
+        ),
+
+        Task(
+            title = "go coaching",
+            description = " ",
+            dueDate = 0L,
+            priority = 1,
+            relatedSubject = "",
+            isCompleted = true,
+            taskSubjectId = 0,
+            taskId = 1
+        ),
+
+        Task(
+            title = "help others",
+            description = " ",
+            dueDate = 0L,
+            priority = 1,
+            relatedSubject = "",
+            isCompleted = false,
+            taskSubjectId = 0,
+            taskId = 1
+        ),
+        Task(
+            title = "Assignment",
+            description = " ",
+            dueDate = 0L,
+            priority = 1,
+            relatedSubject = "",
+            isCompleted = false,
+            taskSubjectId = 0,
+            taskId = 1
+        ),
+        Task(
+            title = "help others",
+            description = " ",
+            dueDate = 0L,
+            priority = 1,
+            relatedSubject = "",
+            isCompleted = false,
+            taskSubjectId = 0,
+            taskId = 1
+        ),
+
+        )
+    Scaffold(topBar = { DashBoardTopAppBar() }) { paddingValues ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -69,8 +147,7 @@ fun DashBoard() {
             }
             item {
                 SubjectCardsSection(
-                    modifier = Modifier.fillMaxWidth(),
-                    subjectList = subjects
+                    modifier = Modifier.fillMaxWidth(), subjectList = subjects
                 )
             }
             item {
@@ -79,17 +156,16 @@ fun DashBoard() {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 48.dp, vertical = 12.dp)
-                )
-                {
+                ) {
                     Text(text = "Start Study Session")
                 }
             }
 
-                TasksList(
-                    sectionTitle = "UPCOMING TASK",
-                    emptyListText = "You don't have any upcoming tasks\n , Click the + sign to Create a List",
-                    tasks = emptyList()
-                )
+            TasksList(
+                sectionTitle = "UPCOMING TASK",
+                emptyListText = "You don't have any upcoming tasks\n , Click the + sign to Create a List",
+                tasks = task
+            )
 
 
         }
@@ -102,8 +178,7 @@ fun DashBoard() {
 fun DashBoardTopAppBar() {
     CenterAlignedTopAppBar(title = {
         Text(
-            text = "StudySmart",
-            style = MaterialTheme.typography.headlineMedium
+            text = "StudySmart", style = MaterialTheme.typography.headlineMedium
         )
     })
 
@@ -111,30 +186,21 @@ fun DashBoardTopAppBar() {
 
 @Composable
 private fun CountCardSection(
-    modifier: Modifier,
-    subjectCount: Int,
-    subjectHours: String,
-    goalHours: String
+    modifier: Modifier, subjectCount: Int, subjectHours: String, goalHours: String
 ) {
     Row(modifier = modifier) {
         CountCard(
-            modifier = Modifier.weight(1f),
-            headingText = "Subject Count",
-            count = "$subjectCount"
+            modifier = Modifier.weight(1f), headingText = "Subject Count", count = "$subjectCount"
         )
         Spacer(modifier = Modifier.width(10.dp))
 
         CountCard(
-            modifier = Modifier.weight(1f),
-            headingText = "Studied Hours",
-            count = subjectHours
+            modifier = Modifier.weight(1f), headingText = "Studied Hours", count = subjectHours
         )
         Spacer(modifier = Modifier.width(10.dp))
 
         CountCard(
-            modifier = Modifier.weight(1f),
-            headingText = "Goal Hours ",
-            count = goalHours
+            modifier = Modifier.weight(1f), headingText = "Goal Hours ", count = goalHours
         )
 
 
@@ -193,8 +259,7 @@ private fun SubjectCardsSection(
             contentPadding = PaddingValues(start = 12.dp, end = 12.dp)
         ) {
             items(subjectList) { subject ->
-                SubjectCard(
-                    subjectName = subject.name,
+                SubjectCard(subjectName = subject.name,
                     gradientColor = subject.colors,
                     onClick = {})
 

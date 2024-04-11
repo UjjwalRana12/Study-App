@@ -1,4 +1,4 @@
-package com.android.studyapp.ui.Presentations.Components
+package com.android.studyapp.domain.models
 
 data class Task(
     val title: String,
@@ -6,5 +6,7 @@ data class Task(
     val dueDate:Long,
     val priority:Int,
     val relatedSubject:String,
-    val isCompleted:String
+    val isCompleted:Boolean,
+    val taskId:Int,
+    val taskSubjectId:Int
 )
