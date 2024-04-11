@@ -3,6 +3,7 @@ package com.android.studyapp.ui.Presentations.Components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -23,9 +24,9 @@ fun CountCard(
     headingText: String,
     count: String
 ) {
-    ElevatedCard {
+    ElevatedCard(modifier=modifier) {
         Column(
-            modifier = Modifier
+            modifier =Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 4.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.Center,
