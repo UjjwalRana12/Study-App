@@ -128,14 +128,16 @@ fun DashBoard() {
         ),
 
         )
-    Scaffold(topBar = { DashBoardTopAppBar() }) { paddingValues ->
+
+    Scaffold(topBar = { DashBoardTopAppBar() })
+    { paddingValues ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
                 .background(Color.White)
         ) {
-            item {
+            item{
                 CountCardSection(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -235,6 +237,7 @@ private fun SubjectCardsSection(
             }
 
         }
+
         if (subjectList.isEmpty()) {
             Image(
                 modifier = Modifier
